@@ -8,7 +8,7 @@
     <meta name="keywords" content="arkitekt, bygglov, konstruktör, solna, bygglovsritningar, husbygge, arkitektritningar, modulhus">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <link rel="icon" type="image/png" href="https://page.genspark.site/v1/base64_upload/65d772cc9c1d4702812792896eba2470">
+    <link rel="icon" type="image/png" href="https://cdn1.genspark.ai/user-upload-image/imagen_generated/d03658c6-89f9-4361-9e6d-486344026816">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,6 +44,23 @@
         .custom-shadow {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: none;
+            animation: slideUp 0.3s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -51,7 +68,7 @@
     <header class="bg-white sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://page.genspark.site/v1/base64_upload/65d772cc9c1d4702812792896eba2470" alt="BL Arkitekter & Konstruktörer Logo" class="h-16">
+                <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/d03658c6-89f9-4361-9e6d-486344026816" alt="BL Arkitekter & Konstruktörer Logo" class="h-16">
                 <div class="ml-3">
                     <h1 class="text-lg sm:text-xl font-bold text-blue-800">BL Arkitekter & Konstruktörer</h1>
                     <p class="text-sm text-gray-600">Solna</p>
@@ -531,7 +548,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/3 mb-8 md:mb-0">
                     <div class="flex items-center mb-4">
-                        <img src="https://page.genspark.site/v1/base64_upload/65d772cc9c1d4702812792896eba2470" alt="BL Arkitekter & Konstruktörer Logo" class="h-12 bg-white rounded-full p-1">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/d03658c6-89f9-4361-9e6d-486344026816" alt="BL Arkitekter & Konstruktörer Logo" class="h-12 bg-white rounded-full p-1">
                         <h3 class="text-lg font-bold ml-3">BL Arkitekter & Konstruktörer</h3>
                     </div>
                     <p class="text-gray-400 mb-4">Vi hjälper dig att förverkliga dina byggdrömmar med professionell service och expertkunskap.</p>
@@ -582,20 +599,51 @@
             <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-500 text-center">
                 <p>Hemsidan är optimerad för Google Ads och skapad för att ge dig den bästa möjliga upplevelsen.</p>
                 <p class="mt-2">I samarbete med <a href="https://www.tass.se" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">TASS.se</a> för kompletta byggprojekt.</p>
+                <p class="mt-2">
+                    <a href="https://bygglovarkitekten.se/integritetspolicy" class="text-blue-400 hover:text-blue-300 transition-colors">Integritetspolicy</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+    <!-- Cookie Policy Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 p-4 z-50">
+    <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+        <p class="text-gray-700 mb-3 sm:mb-0">
+            Vi använder cookies för att analysera trafik och förbättra din upplevelse. Genom att acceptera godkänner du vår 
+            <a href="/integritetspolicy.html" class="text-blue-600 hover:underline">integritetspolicy</a>.
+        </p>
+        <div class="flex space-x-3">
+            <button id="cookie-accept" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors">Acceptera</button>
+            <button id="cookie-deny" class="border border-gray-300 hover:bg-gray-100 px-4 py-2 rounded-md font-medium transition-colors">Neka</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Cookie consent handling
+    document.addEventListener('DOMContentLoaded', function() {
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptButton = document.getElementById('cookie-accept');
+        const denyButton = document.getElementById('cookie-deny');
+        
+        // Check if consent has already been given
+        const cookieConsent = localStorage.getItem('cookieConsent');
+        
+        if (cookieConsent) {
+            cookieBanner.style.display = 'none';
+        }
+        
+        acceptButton.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.style.display = 'none';
         });
-    </script>
+        
+        denyButton.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'denied');
+            cookieBanner.style.display = 'none';
+        });
+    });
+</script>
 </body>
 </html>
